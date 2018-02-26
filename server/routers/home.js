@@ -13,6 +13,7 @@ router.get('/homeList',(req,res)=>{
         if (result[result.length - 1].ess_id<=10){
             let aaa = [];
             result.map((stu) => {
+                stu.date = moment(stu.date).format('YYYY-MM-DD HH:mm:ss');
                 db.query(userSQL.findById,stu.user_id,(err,resUser)=>{
                     resUser.map((user)=>{
                         stu.name = user.name;
